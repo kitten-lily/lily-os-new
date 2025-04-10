@@ -2,7 +2,7 @@
 # Some Gnome extensions don't ship gschema XML, so their settings also need to go in dconf
 
 [org/gnome/desktop/app-folders/folders/Development]
-apps=['dev-pod.desktop', 'code.desktop', 'virt-manager.desktop', 'io.podman_desktop.PodmanDesktop.desktop', 'com.axosoft.GitKraken.desktop]
+apps=['dev-pod.desktop', 'code.desktop', 'virt-manager.desktop', 'io.podman_desktop.PodmanDesktop.desktop', 'com.axosoft.GitKraken.desktop']
 
 [org/gnome/desktop/app-folders/folders/GamingUtilities]
 apps=['protontricks.desktop', 'discover_overlay_configure.desktop', 'com.vysp3r.ProtonPlus.desktop', 'io.github.benjamimgois.goverlay.desktop', 'com.gerbilsoft.rom-properties.rp-config.desktop', 'steamos-nested-desktop.desktop', 'com.dec05eba.gpu_screen_recorder.desktop']
