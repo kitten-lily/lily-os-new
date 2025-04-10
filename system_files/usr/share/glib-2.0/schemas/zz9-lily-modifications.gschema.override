@@ -1,7 +1,7 @@
 #-------------- DESKTOP MODIFICATIONS --------------#
 
 [org.gnome.shell]
-favorite-apps = ['org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop']
+favorite-apps = ['']
 enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'blur-my-shell@aunetx', 'logomenu@aryan_k', 'tailscale@joaophi.github.com']
 
 [org.gnome.desktop.interface]
@@ -37,7 +37,7 @@ show-boxbuddy=false
 
 # Folder names & .desktop shortcut content is recognized as a relocatable schema
 [org.gnome.desktop.app-folders]
-folder-children=['Games', 'GamingUtilities', 'Utilities', 'Containers', 'Wine', 'YaST', 'Pardus', 'Development', 'Productivity']
+folder-children=['Games', 'GamingUtilities', 'Utilities', 'Containers', 'Wine', 'YaST', 'Pardus', 'Development', 'Productivity', 'Media']
 
 # Modifying shortcut actions for custom0, custom1, custom2, etc. are recognized as relocatable schemas
 [org.gnome.settings-daemon.plugins.media-keys]
