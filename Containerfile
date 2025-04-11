@@ -6,10 +6,10 @@ COPY build_files /
 FROM ghcr.io/ublue-os/bluefin-dx:beta
 
 ### MODIFICATIONS
+COPY system_files /
+
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     /ctx/01-flatpaks.sh
-
-COPY system_files /
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
@@ -23,4 +23,4 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
 ### CLEANUP & LINTING
 ## Clean up and verify final image and contents are correct.
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
-    /ctx/99-cleanup.sh
+    /ctx/cleanup.sh
