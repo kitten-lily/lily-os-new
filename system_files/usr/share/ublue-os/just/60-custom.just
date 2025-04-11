@@ -78,7 +78,7 @@ configure-fido2:
       *) echo "invalid choice, exiting"; exit;;
     esac
 
-    read -p "do you need to enrol a new key?  if yes insert key before answering  y/n " choice
+    read -p "do you need to enroll a new key?  if yes insert key before answering  y/n " choice
     case $choice in
         [Yy]* ) systemd-cryptenroll --fido2-device=auto --fido2-with-user-verification=true $device;;
         *) echo "not enrolling a new key" ;;
@@ -92,8 +92,7 @@ configure-fido2:
     fi
     dracutfile="/etc/dracut.conf.d/fido2.conf"
     if [ ! -f $dracutfile ]; then
-        echo 'add_dracutmodules+=" fido2 "
-    force_drivers+=" fido2 "' > $dracutfile
+        echo 'add_dracutmodules+=" fido2 "' > $dracutfile
         echo "created fido2 dracut.conf"
     else
         mods="$(grep -r "add_dracutmodules+=" $dracutfile)"
@@ -103,14 +102,6 @@ configure-fido2:
             fi
         else
             echo 'add_dracutmodules+=" fido2 "' >> $dracutfile
-        fi
-        drivers="$(grep -r "force_drivers+=" $dracutfile)"
-        if [[ $drivers = *"force_drivers+="* ]] ; then
-            if [[ ! $drivers = *"fido2"* ]] ; then
-                sed -i 's/force_drivers+="/force_drivers+=" fido2 /g' "$dracutfile"
-            fi
-        else
-            echo 'force_drivers+=" fido2 "' >> $dracutfile
         fi
         echo "updated fido2 dracut.conf"
     fi
@@ -137,14 +128,8 @@ configure-fido2:
     echo " Fido Configuration complete "
 
 # Perfrom fido2/u2f and enable authentication with it
-setup-u2f-auth:
+configure-u2f-auth:
     #!/usr/bin/env bash
     set -euo pipefail
-    mkdir -p .config/Yubico
-    pamu2fcfg | tee -pa .config/Yubico/u2f_keys
-    sudo authselect enable-feature with-pam-u2f
-
-remove-u2f-auth:
-    #!/usr/bin/env bash
-    set -euo pipefail
-    sudo authselect disable-feature with-pam-u2f
+    mkdir -p $HOME/.config/Yubico
+    pamu2fcfg | tee -p $HOME/.config/Yubico/u2f_keys
