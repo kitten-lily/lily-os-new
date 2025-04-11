@@ -48,6 +48,7 @@ REMOVE_PACKAGES=(
     solaar
     sysprof
     tmux
+    toolbox
     ubuntu-family-fonts
     yelp
 )
